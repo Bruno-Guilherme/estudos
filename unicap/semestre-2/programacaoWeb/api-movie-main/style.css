@@ -1,0 +1,92 @@
+/* Configurações Gerais */
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Baskervville', serif;
+    background-color: blanchedalmond;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Página */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 60rem) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    column-gap: 1.5rem;
+    place-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 1.5rem;
+}
+
+
+/* Formulário */
+form {
+    grid-column: 2 / 3;
+    width: 100%;
+    height: 60%;
+
+}
+fieldset {
+    height: 75%;
+    padding: 5rem;
+    border: inset 2px black;
+}
+
+.input-float {
+    position: relative;
+    padding-top: 13px;
+    margin-top: 10%;
+}
+.input-float input {
+    display: inline-block;
+    
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-bottom: solid 2px;
+    outline: none;
+    
+    background-color: transparent;
+    font-size: 1.5rem;
+    transition: all .3s ease-in;
+}
+.input-float input:focus {
+    border-bottom: solid 2px blue;
+}
+.input-float label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    transition: all .3s ease-in;
+
+    pointer-events: none;
+}
+.input-float input:focus ~ label,
+.input-float input:not(:placeholder-shown) ~ label {
+    font-size: 13px;
+    top: 0;
+    left: 5px;
+}
+
+
+/* Filme */ 
+aside {
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 2fr);
+    column-gap: 3rem;
+}
+.imagem {
+    grid-column: 2 / 3;
+}

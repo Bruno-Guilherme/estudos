@@ -1,0 +1,1 @@
+Atividades relacionadas ao curso do FreeCodeCamp
