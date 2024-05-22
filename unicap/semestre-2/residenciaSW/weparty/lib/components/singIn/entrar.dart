@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weparty/components/home_page/home.dart';
+import 'package:weparty/components/navigation/navigation.dart';
 
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
@@ -74,7 +74,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Home(),
+                        builder: (context) => const NavigationBottomBar(),
                       ),
                     );
                   }
