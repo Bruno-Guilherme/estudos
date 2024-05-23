@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Chamados</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="./assets/script/index.js" type="module" defer></script>
+</head>
+<body>
+    <!--Onde o usuário poderá cadastrar um chamado com os campos: nome, e-mail, assunto e mensagem, que deverão ser salvos no back-end Back4App
+    window.location.href = 'http://pt.stackoverflow.com'"
+    -->
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Abrir Chamado</a></li>
+                <li><a href="./view/dashboard/dashboard.html">Ver Chamados</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Cadastro de Chamados</h1>
+            <form id="form-chamado">
+                <div class="input-float">
+                    <input type="text" name="nome" id="nome" required>
+                    <label for="name">Nome</label>
+                </div>
+    
+                <div class="input-float">
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+    
+                <div class="input-float">
+                    <input type="text" name="assunto" id="assunto" minlength="5" required>
+                    <label for="assunto">Assunto</label>
+                </div>    
+    
+                <div class="textarea-float">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="mensagem" cols="30" rows="10" required></textarea>
+                </div>
+                
+                <div class="div-btn"><button type="submit" id="btn-enviar">Enviar</button></div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

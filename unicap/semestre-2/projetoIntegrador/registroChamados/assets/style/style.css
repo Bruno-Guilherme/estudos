@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: bisque;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    min-height: 180px;
+    width: 100%;
+    min-width: 180px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 10px 80px;
+    gap: 100px;
+}
+
+main {
+    background-color: #7fffd480;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 80%;
+    max-width: 768px;
+
+    margin: 50px 0;
+    padding: 50px;
+
+    border-radius: 5%;
+
+    box-shadow: 0 0 10px 3px #dfe20a80;
+}
+
+.input-float, .textarea-float {
+    position: relative;
+    padding-top: 13px;
+    margin-top: 5%;
+}
+
+.input-float input, .textarea-float textarea {
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-bottom: solid 2px;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+    transition: all .3s ease-in-out;
+}
+
+.input-float input:focus, .textarea-float textarea:focus {
+    border-bottom: solid 2px #aa2c2c80;
+}
+
+.input-float label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    transition: all .3s ease-in;
+    pointer-events: none;
+}
+
+.input-float input:focus + label,
+.input-float input:valid + label {
+    font-size: 13px;
+    top: 0;
+    left: 5px;
+}
+
+
+.div-btn {
+    display: flex;
+}
+button {
+    background-color: transparent;
+    display: inline-block;
+
+    margin: 20px auto;
+
+    padding: 6px;
+    border-radius: 6px;
+    width: 50%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: bisque;
+}
