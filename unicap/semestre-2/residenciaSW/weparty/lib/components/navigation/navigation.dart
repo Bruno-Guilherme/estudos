@@ -17,7 +17,7 @@ class _NavigationBottomBarState extends State<NavigationBottomBar> {
     final ThemeData theme = Theme.of(context);
 
     return Scaffold(
-      body: getPages(theme)[currentPageIndex],
+      body: SafeArea(child: getPages(theme)[currentPageIndex]),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
