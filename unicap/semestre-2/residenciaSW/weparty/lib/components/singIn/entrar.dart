@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:weparty/components/navigation/navigation.dart';
 
 class MyCustomForm extends StatefulWidget {
@@ -9,9 +10,9 @@ class MyCustomForm extends StatefulWidget {
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
+  final _formKey = GlobalKey<FormState>();
   final myControllerUser = TextEditingController();
   final myControllerPassword = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -20,12 +21,40 @@ class _MyCustomFormState extends State<MyCustomForm> {
     super.dispose();
   }
 
+  void _loginUser() async {
+    if (_formKey.currentState!.validate()) {
+      final query = QueryBuilder<ParseObject>(ParseObject('Usuario'))
+        ..whereEqualTo('email', myControllerUser.text)
+        ..whereEqualTo('senha', myControllerPassword.text);
+
+      final ParseResponse response = await query.query();
+
+      if (response.success &&
+          response.results != null &&
+          response.results!.isNotEmpty) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Login Successful!')));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationBottomBar()),
+        );
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Invalid email or password')));
+      }
+    }
+  }
+
+  void _goToSignUpPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SignUpScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -39,7 +68,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   controller: myControllerUser,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
-                    labelText: 'Usuário',
+                    labelText: 'Email',
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -69,21 +98,31 @@ class _MyCustomFormState extends State<MyCustomForm> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState?.validate() == true) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NavigationBottomBar(),
-                      ),
-                    );
-                  }
-                },
-                child: Text("Entrar"),
+                onPressed: _loginUser,
+                child: const Text('Login'),
+              ),
+              TextButton(
+                onPressed: _goToSignUpPage,
+                child: const Text('Create an account'),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Sign Up')),
+      body: const Center(
+        child: Text('Sign up form goes here...'),
       ),
     );
   }

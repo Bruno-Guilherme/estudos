@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Buscar extends StatelessWidget {
+  const Buscar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,8 +43,8 @@ class Buscar extends StatelessWidget {
                       backgroundColor: Colors.grey[300],
                     ),
                     title: const Text('Nome do Evento'),
-                    subtitle: Row(
-                      children: const [
+                    subtitle: const Row(
+                      children: [
                         Icon(Icons.star, color: Colors.red, size: 16),
                         Icon(Icons.star, color: Colors.red, size: 16),
                         Icon(Icons.star, color: Colors.red, size: 16),

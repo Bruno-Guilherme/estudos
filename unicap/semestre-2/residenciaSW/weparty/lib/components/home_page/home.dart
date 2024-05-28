@@ -1,46 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-/* class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Início'),
-          centerTitle: true,
-        ),
-        body: const HomeScreen(),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Início',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Buscar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              label: 'Carrinho',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Conta',
-            ),
-          ],
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          showUnselectedLabels: true,
-        ),
-      ),
-    );
-  }
-} */
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -53,13 +12,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Placeholder for main banner
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
+            const BannerFull(),
             const SizedBox(height: 16),
             // Dots indicator
             Row(
@@ -166,4 +119,76 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class Banner extends StatelessWidget {
+  const Banner({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(16),
+      ),
+    );
+  }
+}
+
+class BannerFull extends StatefulWidget {
+  const BannerFull({
+    super.key,
+  });
+
+  @override
+  State<BannerFull> createState() => _BannerState();
+}
+
+class _BannerState extends State<BannerFull> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height / 4,
+          child: PageView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index) {
+              return BannerItems().items[index];
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BannerItems {
+  List items = [
+    Container(
+      height: 150,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 224, 224, 224),
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    Container(
+      height: 150,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 9, 172, 23),
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    Container(
+      height: 150,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 158, 3, 3),
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+  ];
 }

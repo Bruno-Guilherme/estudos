@@ -5,5 +5,5 @@ import 'package:weparty/components/pesquisar/pesquisar.dart';
 import 'package:weparty/components/profile/profile.dart';
 
 List<Widget> getPages(ThemeData theme) {
-  return <Widget>[HomeScreen(), Buscar(), Carrinho(), Perfil()];
+  return <Widget>[const HomeScreen(), const Buscar(), const Carrinho(), const Perfil()];
 }

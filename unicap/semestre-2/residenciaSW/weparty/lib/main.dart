@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:weparty/components/onboarding/onboarding_view.dart';
 import 'package:provider/provider.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-void main() {
+import 'package:weparty/components/onboarding/onboarding_view.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const keyApplicationId = 'NdRhReEWkw5qlw1rLVZ0q0ob0HE8TmMI06klzPt3';
+  const keyClientKey = '7PramkwCgKCCN3jJhHHRzCYpyLYKWKEY6XUOOGpr';
+  const keyParseServerUrl = 'https://parseapi.back4app.com/parse';
+
+  await Parse().initialize(keyApplicationId, keyParseServerUrl,
+      clientKey: keyClientKey, debug: true);
+  
+  
   runApp(const MyApp());
 }
 

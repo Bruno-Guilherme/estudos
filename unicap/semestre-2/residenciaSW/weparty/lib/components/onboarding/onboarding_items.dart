@@ -1,6 +1,8 @@
 import 'package:weparty/components/onboarding/onboarding_info.dart';
 
 class OnboardingItems {
+  /// Dados que serão montados a partir da estrutura de dados da classe info.
+  
   List<OnboardingInfo> items = [
     OnboardingInfo(titulo: "titulo1", 
     descricao: "descricao1", 

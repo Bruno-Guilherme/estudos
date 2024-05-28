@@ -5,7 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weparty/components/onboarding/onboarding_items.dart';
 import 'package:weparty/components/singIn/entrar.dart';
 
+
+/// ARQUIVO DE DESENVOLVIMENTO DO ONBOARDIN PAGE.
+
+
 class OnboardingView extends StatefulWidget {
+  /// Classe com estado para maniuplação de dados dinâmicos.
   const OnboardingView({super.key});
 
   @override
@@ -13,12 +18,14 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
-  final controller = OnboardingItems();
-  final pageController = PageController();
-  bool isLastPage = false;
+
+  final controller = OnboardingItems(); // Itens que irão ser montados
+  final pageController = PageController(); // Controle da página
+  bool isLastPage = false; // Verifica se está na última página
 
   @override
   void dispose() {
+    // Limpeza de memória
     pageController.dispose();
     super.dispose();
   }
@@ -29,7 +36,7 @@ class _OnboardingViewState extends State<OnboardingView> {
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
         child: controller.items.isEmpty
-            ? Center(child: Text("Nenhum item de onboarding encontrado"))
+            ? const Center(child: Text("Nenhum item de onboarding encontrado"))
             : PageView.builder(
                 onPageChanged: (index) =>
                     setState(() => isLastPage = controller.items.length - 1 == index),
@@ -39,10 +46,12 @@ class _OnboardingViewState extends State<OnboardingView> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // Imagem
                       SvgPicture.asset(controller.items[index].image),
                       const SizedBox(
                         height: 15,
                       ),
+                      // Título
                       Text(
                         controller.items[index].titulo,
                         style: const TextStyle(
@@ -50,9 +59,12 @@ class _OnboardingViewState extends State<OnboardingView> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
                       const SizedBox(
                         height: 15,
                       ),
+
+                      // Descrição
                       Text(
                         controller.items[index].descricao,
                         style: const TextStyle(
@@ -121,13 +133,13 @@ class _OnboardingViewState extends State<OnboardingView> {
               if (!mounted) return;
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => MyCustomForm()),
+                MaterialPageRoute(builder: (context) => const MyCustomForm()),
               );
             } catch (e) {
               print("Erro ao salvar preferências ou navegar: $e");
             }
           },
-          child: const Text("Get started")),
+          child: const Text("Get started", style: TextStyle(color: Colors.black)),),
     );
   }
 }

@@ -5,18 +5,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const SellerPage(),
+    return const MaterialApp(
+      home: SellerPage(),
     );
   }
 }
 
 class SellerPage extends StatelessWidget {
-  const SellerPage({Key? key}) : super(key: key);
+  const SellerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +53,10 @@ class SellerPage extends StatelessWidget {
                       backgroundColor: Colors.grey[300],
                     ),
                     const SizedBox(width: 16),
-                    Expanded(
+                    const Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Personalizados da Day',
                             style: TextStyle(
@@ -70,8 +70,8 @@ class SellerPage extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             Icon(Icons.star, color: Colors.red, size: 16),
                             Text('4,5 (500)'),
                           ],
@@ -144,10 +144,10 @@ class SellerPage extends StatelessWidget {
                         color: Colors.grey[300],
                       ),
                       const SizedBox(width: 16),
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                                 'Lorem Ipsum is not simply random text. It has roots'),
                             SizedBox(height: 8),
