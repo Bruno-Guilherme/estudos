@@ -13,8 +13,7 @@ void main() async {
 
   await Parse().initialize(keyApplicationId, keyParseServerUrl,
       clientKey: keyClientKey, debug: true);
-  
-  
+
   runApp(const MyApp());
 }
 
@@ -26,18 +25,16 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'WeParty',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(255, 82, 82, 1)),
-        ),
-        home: const OnboardingView()
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'WeParty',
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color.fromRGBO(255, 82, 82, 1)),
+          ),
+          home: const SafeArea(child: OnboardingView())),
     );
   }
 }
 
-class MyAppState extends ChangeNotifier {
-  
-}
+class MyAppState extends ChangeNotifier {}

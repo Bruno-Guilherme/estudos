@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,17 +15,6 @@ class HomeScreen extends StatelessWidget {
             // Placeholder for main banner
             const BannerFull(),
             const SizedBox(height: 16),
-            // Dots indicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildDot(true),
-                const SizedBox(width: 8),
-                _buildDot(false),
-                const SizedBox(width: 8),
-                _buildDot(false),
-              ],
-            ),
             const SizedBox(height: 32),
             const Text(
               'Categorias',
@@ -148,19 +138,40 @@ class BannerFull extends StatefulWidget {
 }
 
 class _BannerState extends State<BannerFull> {
+  final controller = BannerItems();
+  final bannerController = PageController();
+
+  @override
+  void dispose() {
+    bannerController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height / 4,
+          height: MediaQuery.of(context).size.height / 3,
           child: PageView.builder(
-            itemCount: 3,
+            controller: bannerController,
+            itemCount: controller.items.length,
             itemBuilder: (context, index) {
-              return BannerItems().items[index];
+              return controller.items[index];
             },
           ),
+        ),
+        SmoothPageIndicator(
+          controller: bannerController,
+          count: controller.items.length,
+          onDotClicked: (index) => bannerController.animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 600),
+                      curve: Curves.easeIn,
+                    ),
+          effect: const WormEffect(
+              dotHeight: 12, dotWidth: 12, activeDotColor: Colors.redAccent),
         ),
       ],
     );
@@ -172,7 +183,7 @@ class BannerItems {
     Container(
       height: 150,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 224, 224, 224),
+        color: Color.fromARGB(235, 67, 40, 218),
         borderRadius: BorderRadius.circular(16),
       ),
     ),
