@@ -39,6 +39,8 @@ class SellerPage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         elevation: 0,
       ),
+      
+      
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -88,6 +90,7 @@ class SellerPage extends StatelessWidget {
                 ),
               ),
             ),
+            
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Align(
@@ -98,29 +101,33 @@ class SellerPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 120,
+            
+            Expanded(
+              flex: 1,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: List.generate(5, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 80,
-                          color: Colors.grey[300],
-                        ),
-                        const SizedBox(height: 8),
-                        const Text('R\$99'),
-                        const Text('Lorem Ipsum'),
-                      ],
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 80,
+                            color: Colors.grey[300],
+                          ),
+                          const SizedBox(height: 8),
+                          const Text('R\$99'),
+                          const Text('Lorem Ipsum'),
+                        ],
+                      ),
                     ),
                   );
                 }),
               ),
             ),
+            
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Align(
@@ -131,6 +138,7 @@ class SellerPage extends StatelessWidget {
                 ),
               ),
             ),
+            
             Column(
               children: List.generate(3, (index) {
                 return Padding(
@@ -163,6 +171,8 @@ class SellerPage extends StatelessWidget {
           ],
         ),
       ),
+      
+      
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

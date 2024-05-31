@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weparty/components/onboarding/onboarding_items.dart';
-import 'package:weparty/components/singIn/entrar.dart';
+import 'package:weparty/components/inicio/onboarding/onboarding_items.dart';
+import 'package:weparty/components/inicio/singIn/entrar.dart';
 
 
 /// ARQUIVO DE DESENVOLVIMENTO DO ONBOARDIN PAGE.

@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
           children: [
             // Placeholder for main banner
             const BannerFull(),
-            const SizedBox(height: 16),
             const SizedBox(height: 32),
             const Text(
               'Categorias',
@@ -66,31 +65,27 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDot(bool isActive) {
-    return Container(
-      width: 8,
-      height: 8,
-      decoration: BoxDecoration(
-        color: isActive ? Colors.black : Colors.grey,
-        shape: BoxShape.circle,
-      ),
-    );
-  }
-
   Widget _buildCategoryPlaceholder(BuildContext context, String text) {
     return Expanded(
-      child: Container(
-        height: 80,
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: Colors.grey[700],
-              fontWeight: FontWeight.bold,
+      //InkWell(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Placeholder()));}
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Placeholder()));
+        },
+        child: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.grey[700],
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -100,29 +95,18 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildNearbyPlaceholder(BuildContext context) {
     return Expanded(
-      child: Container(
-        height: 80,
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(8),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Placeholder()));
+        },
+        child: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
-      ),
-    );
-  }
-}
-
-class Banner extends StatelessWidget {
-  const Banner({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(16),
       ),
     );
   }
@@ -162,14 +146,15 @@ class _BannerState extends State<BannerFull> {
             },
           ),
         ),
+        const SizedBox(height: 16),
         SmoothPageIndicator(
           controller: bannerController,
           count: controller.items.length,
           onDotClicked: (index) => bannerController.animateToPage(
-                      index,
-                      duration: const Duration(milliseconds: 600),
-                      curve: Curves.easeIn,
-                    ),
+            index,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeIn,
+          ),
           effect: const WormEffect(
               dotHeight: 12, dotWidth: 12, activeDotColor: Colors.redAccent),
         ),

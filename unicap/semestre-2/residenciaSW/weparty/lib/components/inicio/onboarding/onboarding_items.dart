@@ -1,4 +1,4 @@
-import 'package:weparty/components/onboarding/onboarding_info.dart';
+import 'package:weparty/components/inicio/onboarding/onboarding_info.dart';
 
 class OnboardingItems {
   /// Dados que serão montados a partir da estrutura de dados da classe info.
