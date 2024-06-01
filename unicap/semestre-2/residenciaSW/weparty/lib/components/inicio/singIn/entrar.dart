@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:weparty/components/inicio/cadastro/cadastro.dart';
 import 'package:weparty/components/navigation/navigation.dart';
@@ -64,6 +65,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SvgPicture.asset('assets/images/logo/weparty_logo.svg'),
+                Text('WeParty'),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -100,6 +103,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                //Row(),
                 ElevatedButton(
                   onPressed: _loginUser,
                   child: const Text('Entrar'),
